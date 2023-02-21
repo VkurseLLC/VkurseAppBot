@@ -26,8 +26,8 @@ async def get_PHONE_NUMBER(message: types.Contact, state: FSMContext):
         hash_sum = str(code)
         print(hash(hash_sum))
         await message.answer(f"Отлично\n"
-                             f"Ваш код: {code}\n"
-                             f"Введите его в приложении", reply_markup=types.ReplyKeyboardRemove())
+                             f"Ваш код: <code>{code}</code>\n"
+                             f"Введите его в приложении", reply_markup=types.ReplyKeyboardRemove(), parse_mode = 'html')
 
     else:
         await message.answer("Не понял вопрос, отправте номер, нажав на кнопку\n"
