@@ -22,12 +22,17 @@ async def get_PHONE_NUMBER(message: types.Contact, state: FSMContext):
         await start(message)
 
     elif message.contact is not None:
-        code = give_code()
-        hash_sum = str(code)
-        print(hash(hash_sum))
-        await message.answer(f"Отлично\n"
-                             f"Ваш код: <code>{code}</code>\n"
-                             f"Введите его в приложении", reply_markup=types.ReplyKeyboardRemove(), parse_mode = 'html')
+        print(message)
+        if message.contact.user_id == message.from_user.id:
+            code = give_code()
+            hash_sum = str(code)
+            print(hash(hash_sum))
+            await message.answer(f"Отлично\n"
+                                f"Ваш код: <code>{code}</code>\n"
+                                f"Введите его в приложении", reply_markup=types.ReplyKeyboardRemove(), parse_mode = 'html')
+        else:
+            await message.answer(f"Номер принадлежит другому человеку, введите свой номер")
+            await state.set_state(Form_get_PHONE_NUMBER.name)
 
     else:
         await message.answer("Не понял вопрос, отправте номер, нажав на кнопку\n"
