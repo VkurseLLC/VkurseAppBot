@@ -1,4 +1,5 @@
 from config import *
+from db import *
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
@@ -21,14 +22,12 @@ async def get_PHONE_NUMBER(message: types.Contact, state: FSMContext):
     if message.text == '/cancel' or message.text == '/menu' or message.text == '/start':
         await start(message)
 
-    elif message.contact is not None:
-        print(message)
+    elif message.contact is not None:        
         if message.contact.user_id == message.from_user.id:
-            code = give_code()
-            hash_sum = str(code)
-            print(hash(hash_sum))
+            verification_code = give_code()
+            save_auth_dates(create_connection(), message.contact.phone_number.replace('+',''), verification_code)
             await message.answer(f"Отлично\n"
-                                f"Ваш код: <code>{code}</code>\n"
+                                f"Ваш код: <code>{verification_code}</code>\n"
                                 f"Введите его в приложении", reply_markup=types.ReplyKeyboardRemove(), parse_mode = 'html')
         else:
             await message.answer(f"Номер принадлежит другому человеку, введите свой номер")
@@ -65,4 +64,5 @@ async def process_callback_take_code(callback: types.CallbackQuery, state: FSMCo
 
 
 if __name__ == '__main__':
+    print("Bot is working")
     executor.start_polling(dp)
