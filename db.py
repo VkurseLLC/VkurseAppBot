@@ -6,11 +6,11 @@ def create_connection():
 
     try:
         connection = mysql.connector.connect(
-            host = '95.163.241.100',
-            port = 3306,
-            user = 'super_user', 
-            password = '****9963AAdd',
-            database = 'vkurse_database')
+            host = '80.78.240.205',
+            port = 13306,
+            user = 'vkurse_editor', 
+            password = 'T6XBwtgQ',
+            database = 'vkurse_db')
 
         print("Подключение к базе данных MySQL прошло успешно")
         return connection
