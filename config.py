@@ -14,7 +14,8 @@ from aiogram.dispatcher import FSMContext
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 
-TOKEN = '6009259093:AAHVe3QNenq9EfY_iXyxc5WRDvzCn7QuFd4'
+# TOKEN = '6009259093:AAHVe3QNenq9EfY_iXyxc5WRDvzCn7QuFd4' #OFFICICAL
+TOKEN = '5973700870:AAHBSYtSJ-YWhA9wajNKI6GldnPpjB3TYV0' #TEST
 
 
 
