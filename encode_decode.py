@@ -6,7 +6,7 @@ from Cryptodome.Random import get_random_bytes
 
 crypto_password = "Y3V1ba3FWwnd6u0O3ReoGzqNMBfBrw3DNIXOGfHJozlxyMwn2MSiK4TCJqAPgOn1"
 
-
+# ШИФРОВАНИЕ 
 def encrypt(plain_text, password):
     # generate a random salt
     salt = get_random_bytes(AES.block_size)
@@ -31,7 +31,7 @@ def encrypt(plain_text, password):
     
 
 
-
+# РАСФИШРОВКА 
 def decrypt(enc_dict, password):
     # decode the dictionary entries from base64
     salt = b64decode(enc_dict['salt'])
